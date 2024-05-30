@@ -2,13 +2,13 @@
 #   in which case these values can be managed in the UI.
 
 # The name of the stage.
-# project_name: "Stage Template"
+project_name: "Improved Response Formatting by Jimbo"
 
 # A short tagline to show in search.
-# tagline: "A base template for all stages."
+tagline: "Generic formatting, currently expirement."
 
 # 'PUBLIC', 'PRIVATE', or 'UNLISTED'.
-# visibility: 'PUBLIC'
+visibility: 'UNLISTED'
 
 # 'ADJACENT' | 'NONE' | 'COVER' | 'FULLSCREEN'
 # 'ADJACENT' is default. The frame will display on the side of the
@@ -18,7 +18,7 @@
 #   but leave the text input box.
 # 'FULLSCREEN' will make nothing below the header bar
 #   show except for your stage.
-# position: 'ADJACENT'
+position: 'NONE'
 
 # Self-explanatory.
 # tags:
@@ -62,10 +62,10 @@ state_schema:
           type: integer
 
 # Whether to publish as 'Anonymous' instead of under your username.
-# is_anonymous: false
+is_anonymous: false
 
 # Self-explanatory.
-# ratings_disabled: false
+ratings_disabled: false
 
 # This is here for future cases where ex. you need user secrets,
 #    but currently does nothing.

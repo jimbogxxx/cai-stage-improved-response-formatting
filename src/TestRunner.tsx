@@ -1,6 +1,6 @@
 import {Stage} from "./Stage";
 import {useEffect, useState} from "react";
-import {DEFAULT_INITIAL, StageBase, InitialData} from "@chub-ai/stages-ts";
+import {DEFAULT_INITIAL, StageBase, InitialData, StageResponse, DEFAULT_MESSAGE} from "@chub-ai/stages-ts";
 
 // Modify this JSON to include whatever character/user information you want to test.
 import InitData from './assets/test-init.json';
@@ -37,7 +37,7 @@ export const TestStageRunner = <StageType extends StageBase<InitStateType, ChatS
      This is the main thing you'll want to modify.
      ***/
     async function runTests() {
-        /*
+        
         await stage.setState({someKey: 'A new value, even!'});
         refresh();
 
@@ -50,7 +50,7 @@ export const TestStageRunner = <StageType extends StageBase<InitStateType, ChatS
         });
         console.assert(beforePromptResponse.error == null);
         refresh();
-        */
+        
         /***
          "What is all of this nonsense with 'DEFAULT_MESSAGE'?" you may well ask.
          The purpose of this is to future-proof your test runner.
@@ -64,13 +64,16 @@ export const TestStageRunner = <StageType extends StageBase<InitStateType, ChatS
             where relevant in your tests prevents a version bump
             from breaking your test runner in many cases.
          ***/
-        /*
+        let testResponse = "Why yes hello, and this is what happens when a bot sends ministrations.";
         const afterPromptResponse: Partial<StageResponse<ChatStateType, MessageStateType>> = await stage.afterResponse({
             ...DEFAULT_MESSAGE, ...{
             promptForId: null,
             anonymizedId: "2",
-            content: "Why yes hello, and this is what happens when a bot sends a response.",
+            content: testResponse,
             isBot: true}});
+        console.log(afterPromptResponse.modifiedMessage);
+        console.assert(testResponse != afterPromptResponse.modifiedMessage);
+        console.assert(testResponse != null);
         console.assert(afterPromptResponse.error == null);
         refresh();
 
@@ -80,7 +83,7 @@ export const TestStageRunner = <StageType extends StageBase<InitStateType, ChatS
         }}), 5);
         console.assert(afterDelayedThing.error == null);
         refresh();
-        */
+        
     }
 
     useEffect(() => {

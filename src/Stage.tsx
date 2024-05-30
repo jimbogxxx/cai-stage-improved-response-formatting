@@ -1,6 +1,7 @@
 import {ReactElement} from "react";
 import {StageBase, StageResponse, InitialData, Message} from "@chub-ai/stages-ts";
 import {LoadResponse} from "@chub-ai/stages-ts/dist/types/load";
+import { replacePhrases } from './BadWords';
 
 /***
  The type that this stage persists message-level state in.
@@ -156,6 +157,7 @@ export class Stage extends StageBase<InitStateType, ChatStateType, MessageStateT
             isBot             /*** @type: boolean
              @description Whether this is from a bot, conceivably always true. ***/
         } = botMessage;
+        let formatted = replacePhrases(content);
         return {
             /*** @type null | string @description A string to add to the
              end of the final prompt sent to the LLM,
@@ -165,7 +167,7 @@ export class Stage extends StageBase<InitStateType, ChatStateType, MessageStateT
             messageState: {'someKey': this.myInternalState['someKey']},
             /*** @type null | string @description If not null, the bot's response itself is replaced
              with this value, both in what's sent to the LLM subsequently and in the database. ***/
-            modifiedMessage: null,
+            modifiedMessage: formatted,
             /*** @type null | string @description an error message to show
              briefly at the top of the screen, if any. ***/
             error: null,
