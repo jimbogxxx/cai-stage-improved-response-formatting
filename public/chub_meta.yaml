@@ -75,3 +75,9 @@ ratings_disabled: false
 #    you should not make or set this value.
 # github_path will be added if it does not exist. It is the URL of the repo.
 
+
+github_path: 'https://github.com/jimbogxxx/cai-stage-improved-response-formatting'
+
+
+extension_id: 'cai-stage-improved-response-formatting-beb73926f2e2'
+
